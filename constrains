@@ -1,0 +1,131 @@
+create database dataset05;
+use dataset05;
+
+create table emp_data(emp_id int(10) auto_increment primary key,emp_name varchar(40),gender varchar(10)not null,
+age int check(age>18-30),salary int(8),city varchar(20) Default 'chennai',aadhar varchar(50)unique);
+
+select * from emp_data;
+
+
+-- task 1 ---
+
+insert into emp_data (emp_name,gender,age,salary,aadhar) values
+("sweetha","female",27,30000,674868886),
+("pradeep","male",20,25000,3486747890),
+("randeep","male",28,50000,4695644458),
+("shalu","female",28,20000,5634889900);
+
+-- task 2 --
+
+create table task2(name varchar(100), age int, gender varchar(20)not null,check( gender="male"));
+insert into task2 values("praveen",28,"male");
+select*from task2;
+ 
+ -- task 3 --
+ 
+ create table task3(name varchar(100), age int, gender varchar(20)not null,salary int,check (salary>10000));
+ insert into task3 values ( "priya",24,"female",30000);
+ insert into task3 values ("sweetha",28,"female",19000);
+ select*from task3;
+ 
+ --  task 4 --
+ 
+create table task4(name varchar(100),age int(50),gender varchar(20)not null,salary int(20),city varchar(50),pan varchar(30)unique);
+insert into task4 values('Robert Smith',50,'Male', 3000, 'Hyderabad', 'ABCDE1234f');
+insert into task4 values('John Doe', 70, 'Male', 20000, 'Mumbai', 'ABCDE1234F');
+select * from task4;
+
+-- task 5 --
+
+create table task5(name varchar(100),age int(20),gender varchar(21)not null,salary int(30),city varchar(50)default'chennai',pan  varchar(20) unique);
+INSERT INTO task5 (name, age, gender, salary, Pan)
+VALUES ('Mary Johnson', 28, 'Female', 15000, 'ZYXWV09876');
+select * from task5;
+
+
+-- task 6 --
+
+create table task6(name varchar(100),age int(20),gender varchar(21)not null,salary int(30),city varchar(50)default'chennai',pan  varchar(20),email varchar(50) unique);
+insert into task6 values('John Doe', 30, 'Male', 25000, 'Bangalore', 'ABCDE1234F', 'john@example.com');
+insert into task6 values('Jane Smith', 32, 'Female', 27000, 'Mumbai', 'FGHIJ5678K', 'john@example.com');
+ select * from task6;
+ 
+ -- task 7 --
+ 
+CREATE TABLE task7 (fullname VARCHAR(100) NOT NULL, age INT, gender VARCHAR(50) NOT NULL, salary INT, city VARCHAR(100), PAN VARCHAR(50));
+INSERT INTO task7(age, gender, salary, city, Pan)
+VALUES (25, "Male", 20000, "Chennai", "KLMNO12345");
+select * from task7;
+
+-- task 8 --
+
+create Table task8 (fullname varchar(100),age int,gender varchar(60) not null, salary int, city varchar(100),pan varchar(50));
+INSERT INTO task8(fullname,age, salary, city, Pan)values
+("Alice Brown", 28, 22000, "Chennai", "LMNOP67890");
+select * from task8;
+
+-- task 9 --
+CREATE TABLE task9 (name VARCHAR(100), age INT, gender VARCHAR(50) , salary INT, city VARCHAR(100),
+PAN VARCHAR(100) UNIQUE, mobile int(15), CHECK (LENGTH(mobile) = 10));
+select * from task9;
+INSERT INTO task9(name, age, gender, salary, city, Pan, mobile)
+VALUES ('Raj Patel', 35, 'Male', 28000, 'Ahmedabad', 'QRSTU98765', '1234516789');
+
+select * from task9;
+CREATE TABLE dep( id INT PRIMARY KEY,name VARCHAR(50));
+
+
+-- task10 --
+CREATE TABLE task10(name VARCHAR(100) NOT NULL, age INT, gender VARCHAR(50) NOT NULL, salary INT,
+ city VARCHAR(100), PAN VARCHAR(50),dep_id INT,FOREIGN KEY(dep_id) REFERENCES dep(id));
+select * from task10;
+INSERT INTO task10 (name, age, gender, salary, city, Pan, dep_id)
+VALUES ('Ravi Kumar', 29, 'Male', 24000, 'Hyderabad', 'VWXYZ54321', 99);
+select * from task10;
+
+-- task 11 --
+CREATE TABLE task11( name VARCHAR(100), age INT, CHECK (age >0), gender VARCHAR(50) , salary INT, city VARCHAR(100) ,PAN VARCHAR(100));
+select * from task11;
+INSERT INTO task11 (name, age, gender, salary, city, PAN)
+VALUES ('Priya Singh', 1, 'Female', 30000, 'Delhi', 'ABCDE67890');
+select * from task11;
+
+-- task 12 --
+CREATE TABLE task12( name VARCHAR(100),check(LENGTH(name>=3) AND(LENGTH(name<=20))), age INT, 
+gender VARCHAR(50) , salary INT, city VARCHAR(100) ,PAN VARCHAR(100));
+select * from task12;
+INSERT INTO task12(name, age, gender, salary, city, PAN)
+VALUES ('John ', 32, 'Male', 25000, 'Chennai', 'PQRS123456');
+select * from task12;
+INSERT INTO task12(name, age, gender, salary, city, PAN)
+VALUES ('John', 32, 'Male', 25000, 'Chennai', 'PQRS123456');
+ select * from task12;
+
+-- task13 --
+
+CREATE TABLE task13( name VARCHAR(100), age INT, gender VARCHAR(50) , salary INT, city VARCHAR(100) NOT NULL ,PAN VARCHAR(100));
+select * from task13;
+INSERT INTO task13 (name, age, gender, salary,city, PAN)
+VALUES ('Amit Shah', 40, 'Male', 32000,'Chennai', 'WXYZ987654');
+select * from task13;
+
+-- task 14 --
+CREATE TABLE task14( name VARCHAR(100), age INT DEFAULT 25, gender VARCHAR(50) , salary INT, city VARCHAR(100)  ,PAN VARCHAR(100));
+select * from task14;
+INSERT INTO task14 (name, gender, salary, city, Pan)
+VALUES ('Neha Verma', 'Female', 27000, 'Pune', 'ABCDE56789');
+select * from task14;
+
+-- task15 --
+CREATE TABLE task15( name VARCHAR(100),age INT, gender VARCHAR(50) ,salary INT,CHECK (salary>=15000 and salary<=50000),city VARCHAR(100) , PAN VARCHAR(100));
+select * from task15;
+INSERT INTO task15(name, age, gender, salary, city, Pan)
+VALUES ('Kiran Rao', 45, 'Male', 40000, 'Kolkata', 'HIJKL98765');
+select * from task15;
+
+-- task 16 --
+CREATE TABLE task16( name VARCHAR(100),age INT, gender VARCHAR(50) ,salary INT,city VARCHAR(100) , PAN VARCHAR(100));
+INSERT INTO task16 (name, age, gender, salary, city, PAN)
+VALUES ('Rohit Sharma', 35, 'Male', 35000, 'Mumbai', 'MNO12345');
+ALTER TABLE task16 ADD COLUMN country VARCHAR(50) DEFAULT 'INDIA';
+SELECT * from task16;
